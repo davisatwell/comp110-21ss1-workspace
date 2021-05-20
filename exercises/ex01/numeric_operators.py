@@ -2,8 +2,8 @@
 
 __author__: str = "730384155"
 
-left: int = input("Left-hand side:")
-right: int = input("Right-hand side:")
+left: str = input("Left-hand side:")
+right: str = input("Right-hand side:")
 sol1 = int(left)**int(right)
 sol2 = int(left)/int(right)
 sol3 = int(left)//int(right)
