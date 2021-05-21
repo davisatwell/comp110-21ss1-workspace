@@ -1,1 +1,21 @@
+"""This file was used during class on May 20th"""
+
 print("Happy Thursday!")
+
+x = "hello"
+print(x)
+print("The first value in the string assigned to varible x is " + x[0])
+
+#Combining Operators
+division: float = 7/5
+modulo: int = 7%5
+print("The value of the var division is", division)
+print("The value of modulo is", modulo)
+
+print(division + modulo)
+print(division/modulo)
+print(division//modulo)
+x: float = (division**modulo) #this one produces a rounding error! (proof computer's memory has limitations)
+y: float = float(x)
+print(y)
+print(division%modulo)
