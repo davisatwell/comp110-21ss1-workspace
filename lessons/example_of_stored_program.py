@@ -19,3 +19,23 @@ x: float = (division**modulo) #this one produces a rounding error! (proof comput
 y: float = float(x)
 print(y)
 print(division%modulo)
+
+#Variables
+
+#Var reassignment
+x = 4
+print(x) #prints 4
+x = "davis" 
+print(x) #this same command from line 2 now prints "davis"
+
+t: str
+t = "hi"
+g = t + str(1)
+print(g)
+
+age: int
+age = 12
+print(age)
+age: str
+age = "13"
+print(age)
