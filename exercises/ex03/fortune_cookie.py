@@ -12,7 +12,7 @@ __author__ = "730384155"
 from random import randint
 
 
-num: int = randint(1,4)
+num: int = randint(1, 4)
 print("Your fortune cookie says...")
 
 if num <= 2:
@@ -25,6 +25,6 @@ else:
         print("Your family will suprise you with a gift soon!")
     else:
         print("You will get a new pet in the near future!")
-        
+
 
 print("Now, go spread positive vibes!")
