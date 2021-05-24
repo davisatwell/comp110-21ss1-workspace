@@ -30,18 +30,18 @@ target_percent_vaccinated_input: str = input("Target percent vaccinated: ")
 target_percent_vaccinated: int = int(target_percent_vaccinated_input)
 
 today: datetime = datetime.today()
+one_day: timedelta = timedelta(1)
 #Start of program
 dec_target: float = target_percent_vaccinated/100
 target_doses: float = population*dec_target
-#target_doses: int = round(target_doses)
-#doses_to_reach_goal: int = target_doses - doses_administered
-days_to_goal: float = target_doses/doses_per_day
-print(days_to_goal)
-days_to_goal1: int = round(days_to_goal)
-print(days_to_goal)
-days_to_goal: timedelta = timedelta(days_to_goal1)
-print(days_to_goal)
-day_goal_is_reached: datetime = today + days_to_goal
-date_: str = day_goal_is_reached.strftime("%B %d, %Y")
+target_doses = target_doses*2
+target_doses = target_doses - doses_administered
 
-print("We will reach",str(target_percent_vaccinated)+"%","vaccination in",str(days_to_goal1),"days, which falls on", date_)
+days_to_goal: int = round(target_doses/doses_per_day)
+
+days_to_goal1: timedelta = timedelta(days_to_goal)
+
+day_goal_is_reached: datetime = today + days_to_goal1
+date_: datetime = day_goal_is_reached.strftime("%B %d, %Y")
+
+print("We will reach",str(target_percent_vaccinated)+"%","vaccination in",str(days_to_goal),"days, which falls on", str(date_))
