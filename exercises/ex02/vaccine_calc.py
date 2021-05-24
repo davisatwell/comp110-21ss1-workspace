@@ -34,8 +34,8 @@ one_day: timedelta = timedelta(1)
 #Start of program
 dec_target: float = target_percent_vaccinated/100
 target_doses: float = population*dec_target
-target_doses = target_doses*2
-target_doses = target_doses - doses_administered
+target_doses: float = target_doses*2
+target_doses: float = target_doses - doses_administered
 
 days_to_goal: int = round(target_doses/doses_per_day)
 
