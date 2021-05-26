@@ -11,7 +11,9 @@ s: str = ""
 if iteration <= 0:
     print("No beat...")
 else:
-    while iteration >= i:
+    while iteration > i:
         s += beat + " "
         iteration -= 1
+    if iteration == i:
+        s += beat
     print(s)
