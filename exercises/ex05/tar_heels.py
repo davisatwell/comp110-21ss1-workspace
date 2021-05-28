@@ -14,7 +14,6 @@ def main() -> None:
     print(tar_heels(choice))
 
 
-
 def tar_heels(Ramsees: int) -> str:
     """UNC."""
     s: str = ""
