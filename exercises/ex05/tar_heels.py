@@ -3,7 +3,6 @@
 __author__ = "730384155"
 
 
-from random import randint
 i: int = 0
 j: int = 1
 
