@@ -7,14 +7,16 @@ from random import choice
 i: int = 0
 j: int = 1
 
+
 def main() -> None:
     """The entrypoint of the program, when run as a module."""
     choice: int = int(input("Enter an int: "))
     print(tar_heels(choice))
 
 
+
 def tar_heels(Ramsees: int) -> str:
-    """UNC"""
+    """UNC."""
     s: str = ""
     if Ramsees % 2 == 0:
         if Ramsees % 7 == 0:
