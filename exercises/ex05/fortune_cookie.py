@@ -12,9 +12,9 @@ def main() -> None:
     print("Now, go spread positive vibes!")
 
 
-def fortune_cookie()-> str: 
+def fortune_cookie() -> str: 
     """Fortune Cookie Message."""
-    num: int = randint(0,3)
+    num: int = randint(0, 3)
     s: str = ""
     if num == 0:
         s += "You will find the love of your life soon!"

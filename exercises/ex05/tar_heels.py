@@ -3,15 +3,15 @@
 __author__ = "730384155"
 
 
-from random import choice
+from random import randint
 i: int = 0
 j: int = 1
 
 
 def main() -> None:
     """The entrypoint of the program, when run as a module."""
-    choice: int = int(input("Enter an int: "))
-    print(tar_heels(choice))
+    choice1: int = int(input("Enter an int: "))
+    print(tar_heels(choice1))
 
 
 def tar_heels(Ramsees: int) -> str:
