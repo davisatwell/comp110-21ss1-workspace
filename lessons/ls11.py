@@ -1,3 +1,5 @@
+"""Converting lesson 4 to a function."""
+
 def is_even(num: int) -> bool:
     """Evaluate if argument is even or not."""
     if num % 2 == 0:

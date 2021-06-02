@@ -4,6 +4,7 @@ c: int = int(input("Enter a value for a: "))
 d: int = int(input("Enter a value for b: "))
 
 def my_max(a: int, b: int) -> int:
+    """Returns the Largest Parameter."""
     if a > b:
         return a
     elif a == b:
@@ -11,6 +12,12 @@ def my_max(a: int, b: int) -> int:
     else:
         return b
 
-if __name__ == '__main__':
+# Use of main function - sets off other functions to go on adventure!
+def main() -> None:
+    """Entrypoint of a program."""
     result: int = my_max(c,d)
     print(result)
+
+# main function
+if __name__ == '__main__':
+    main()
