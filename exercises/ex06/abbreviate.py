@@ -7,7 +7,7 @@ s: str = ""
 
 def main() -> None:
     """The entrypoint of the program, when run as a module."""
-    print(abbreviate(x))
+    print(f"The abbreviation is \"{abbreviate(x)}\"")
 
 def abbreviate(char: str) -> str:
     i: int = 0
