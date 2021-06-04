@@ -1,16 +1,26 @@
 """A function to abbreviate strings."""
 
-__author__ = "YOUR 9-DIGIT PID"
+__author__ = "730384155"
 
+x: str = input("Enter desired words: ")
+s: str = ""
 
 def main() -> None:
     """The entrypoint of the program, when run as a module."""
-    # TODO 2: Prompt the user for text....
-    # .. and make use of abbreviate function and print it.
+    print(abbreviate(x))
 
-
-# TODO 1: Define the abbreviate function, and its logic, here.
-
+def abbreviate(char: str) -> str:
+    i: int = 0
+    global s
+    user_input: str = x
+    if user_input.isupper():
+        return user_input
+    else:
+        while i < len(user_input):
+            if user_input[i].isupper():
+                s += user_input[i]
+            i += 1
+        return s
 
 if __name__ == "__main__":
     main()
