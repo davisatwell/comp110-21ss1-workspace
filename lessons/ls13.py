@@ -6,5 +6,8 @@ def string_indexing(word: str) -> str:
     new_word: str = ""
     while i < len(word):
         new_word += word[i]
-        i += 2
+        i += 2  # incrimenting the index by two instead of the usual one
     return new_word
+
+
+print(string_indexing("boat"))
