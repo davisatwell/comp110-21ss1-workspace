@@ -41,3 +41,22 @@ def passing_grade(students: dict[str, float]) -> list[str]:
     return results
 
 print(passing_grade(final_grades)) # Output: ['Davis', 'Leo']
+
+teachers_pet: list[str] = ["Davis", "Hugh"]
+
+# Boost of Points
+for pet in teachers_pet:
+    if pet in final_grades:
+        # increment since the pet key is valid, and ezists in the final_grades dictionary
+        final_grades[pet] += 50.0 # Produces an error due to "Claire" not being in the referenced dictionary
+    else:
+        # initializing bc the key is not yet in the dictionary
+        final_grades[pet] = 65.0
+print(final_grades) 
+
+
+
+frequency_table: dict[str, int] = {}
+# loop for each color in input dictionary
+# if the color is already in the table, increment its value
+# if not, add it to the table with a starting value of 1
