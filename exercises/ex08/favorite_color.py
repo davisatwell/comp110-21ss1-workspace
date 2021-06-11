@@ -8,14 +8,15 @@ def main() -> None:
     print(favorite_color(color_count))
 
 
-color_count: dict[str, int] = {"davis": "red", "leo": "red", "rhett": "blue"}
+color_count: dict[str, str] = {"davis": "red", "leo": "red", "rhett": "blue"}
 frequency_table: dict[str, int] = {}
 
 
 def favorite_color(names_and_colors: dict[str, str]) -> str:
-    """returns color that appears most in names_and_colors."""
+    """Returns color that appears most in names_and_colors."""
     s: str = ""
     i: int = 0
+    
     for key in names_and_colors:
         color = names_and_colors[key]
         if color in frequency_table:

@@ -15,7 +15,7 @@ def over_21(names_and_birth_year: dict[str, int]) -> list[str]:
     """Creating a list of students over 21."""
     resulting_list: list[str] = []
     for key in names_and_birth_year:
-        if 2021 - names_and_birth_year[key] > 21:
+        if 2021 - names_and_birth_year[key] >= 21:
             resulting_list.append(key)
     return resulting_list
 
