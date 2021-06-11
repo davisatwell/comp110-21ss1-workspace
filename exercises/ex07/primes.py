@@ -6,6 +6,7 @@ __author__ = "730384155"
 def main() -> None:
     """The entrypoint of the program, when run as a module."""
     print(is_prime(9))
+    print(list_primes(10,20))
 
 def is_prime(num: int) -> bool:
     """Testing if a number is prime."""
@@ -18,28 +19,27 @@ def is_prime(num: int) -> bool:
             return False
         i += 1    
     return True
-    
-
-# def is_prime(num: int) -> bool:
-#  """Testing if a number is prime."""
-#  i: int = 0
-#  j: int = 1
-#  test_var = num % j
-#  l: range = range(0, num + 1)
-#  if test_var * l[i] == int:
-#     return False
-#  elif num <= 1:
-#     return False
-#  i += 1
-#  j += 1
-#  if i > num:
-#         return True
 
 
-
-
-
-# TODO 2: Define the list_primes function, and its logic, here.
+def list_primes(a: int, b: int) -> list[int]:
+    """List of prime numbers."""
+    a_list = []
+    while a <= b:
+        a_list.append(a)
+        a += 1
+    # print(a_list)
+    z: int = 0
+    prime_numbers: list[int] = []
+    # while z < b:
+    #     if is_prime(a_list[z]) == True:
+    #         prime_numbers.append(a_list[z])
+    #     z += 1
+    # return prime_numbers
+    for e in a_list:
+        is_prime(e)
+        if is_prime(e) == True:
+            prime_numbers.append(e)
+    return prime_numbers
 
 
 if __name__ == "__main__":
