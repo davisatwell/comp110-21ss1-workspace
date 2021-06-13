@@ -2,7 +2,6 @@
 from __future__ import annotations
 __author__ = "YOUR 9-DIGIT PID"
 
-
 def main() -> None:
     """The entrypoint of the program, when run as a module."""
     # TODO 3: Uncomment the following lines to test your classes
@@ -28,11 +27,9 @@ def main() -> None:
 
 
 class Animal:
-    """Animals and their power."""
     species: str
     danger_level: int
     emoji: str
-
     def __init__(self, species: str, danger_level: int, emoji: str):
         """Initializing attributes."""
         self.species = species
@@ -48,7 +45,6 @@ class Animal:
         else:
             return opponent
 
-
 class Team:
     """Animal Team."""
     team_name: str
@@ -63,7 +59,7 @@ class Team:
     
     def battle(self, opponent: Team) -> list[Animal]:
         """The battle of animals in teams of 2."""
-        winner: list[Animal] = []
+        winners: list[Animal] = []
         if len(self.animals) != len(opponent.animals):
             empty_list: list[Animal] = []
             return empty_list
@@ -72,30 +68,25 @@ class Team:
             animal1: Animal = self.animals[i]
             animal2: Animal = opponent.animals[i]
             if animal1.danger_level > animal2.danger_level:
-                self.score += 1
-                winner.append(animal1)
+                self.score += 5
+                winners.append(animal1)
             elif animal2.danger_level > animal1.danger_level:
-                opponent.score += 1
-                winner.append(animal2)
-            # while i < len(self.animals) and len(opponent.animals):
-            i += 1
-        return winner
+                opponent.score += 5
+                winners.append(animal2)
+            while i < len(self.animals) and len(opponent.animals):
+                i += 1
+        return winners
     
     def who_won(self, opponent: Team) -> str:
         """Returns the winning team."""
-        winning_team: str
-        if self.score == opponent.score:
-            if self.score and opponent.score == 0:
-                return "The battle hasn't happened yet"
-            else:   
-                return "It was a tie!"
+        if self.score and opponent.score == 0:
+            return "The battle hasn't happened yet"
+        elif self.score == opponent.score:
+            return "It was a tie!"
         elif self.score > opponent.score:
-            winning_team = self.team_name
-            return f"Team {self.team_name} won!"
-        elif opponent.score > self.score:
-            winning_team = opponent.team_name
-        return winning_team
-
+            return f"Team {self.name} won!"
+        else:
+            return f"Team {opponent.name} won!"
 
 if __name__ == "__main__":
     main()
