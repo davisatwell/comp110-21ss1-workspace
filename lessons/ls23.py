@@ -13,9 +13,15 @@ class Point:
     def add(self, other: Point) -> Point:
         x: float = self.x + other.x
         y: float = self.y + other.y
+        return Point(x,y)
+
+    def __add__(self, other: Point) -> Point:
+        """Add two point types."""
+        
 
 
 def main() -> None:
         a: Point = Point(1.0, 2.0)
         b: Point = Point(3.0, 4.0)
         c: Point = a.add(b)
+        print(f"Point C: {c.x, c.y}")
