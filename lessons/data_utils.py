@@ -1,8 +1,3 @@
-"""Data utility functions."""
-
-__author__ = "YOUR 9-DIGIT PID"
-
-
 """Data utility functions(Representing the Frequency table in LS19.py)."""
 from csv import DictReader
 # Functions below are under the hood of pandas and numpy
@@ -48,8 +43,9 @@ def select(table: dict[str, list[str]], cols: list[str]) -> dict[str, list[str]]
     return result
 
 table: list[dict[str, str]] = read_csv_rows("data/weather.csv")
-
+# print(table)
 column_oriented = columnar(table)
+print(column_oriented) # OUPUT: {'date': ['3/16', '3/17', '3/18'], ' high': [' 48.0', ' 63.0', ' 72.0'], ' low': [' 39.0', ' 51.0', ' 50.0']}
 n_rows = (head(column_oriented, 2)) # OUTPUT: {'date': ['3/16', '3/17'], ' high': [' 48.0', ' 63.0'], ' low': [' 39.0', ' 51.0']}
 print(n_rows) # (head(column_oriented, 2)) is saying that "I want to print the first two rows of data in said CSV file in column oriented format"
 # dates = column_values(table, "date") # extracts the "date" column from the weather.csv file
@@ -59,14 +55,3 @@ print(n_rows) # (head(column_oriented, 2)) is saying that "I want to print the f
 
 subset_col_oriented = select(column_oriented, ["date", " low"])
 print(f"Subset of Columns: {subset_col_oriented}")
-
-
-def count(values: list[str]) -> dict[str, int]:
-    """Returning a dictionary of the counts of the items in input list."""
-    result: dict[str, int] = {}
-    for item in values:
-        if item in result:
-            result[item] += 1
-        elif item not in result:
-            result.append(item, 1)
-    return result 
