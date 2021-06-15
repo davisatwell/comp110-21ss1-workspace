@@ -1,52 +1,76 @@
 """Roulette Simulator"""
 
+
 __author__: str
 __author__ = "730384155"
 
 # Imports
 
+
 import time
 import random
 from random import randint
 
+
 # Globals
+EMOJI: str = "\U000F190D"
 zero: int = 0
 one: int = 1
-k: int = 2  
+k: int = 2
+m: int = 1
 player: str = ""
-points: int = 50
+points: int
 color_generator: list = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2]
-number_range: list = list(range(-1,37))
-range_1: list = list(range(0,11)) # Odd numbers are RED and even numbers are BLACK.
-range_2: list = list(range(18,29)) # Odd numbers are RED and even numbers are BLACK.
-range_3: list = list(range(10, 19))# Odd numbers are BLACK and even numbers are RED.
-range_4: list = list(range(28, 37))# Odd numbers are BLACK and even numbers are RED.
+number_range: list = list(range(0,37))
 COLOR: int = random.choice(color_generator)
 NUMBER: int = random.choice(number_range)
 T: bool = True
 F: bool = False
 
+
 def main() -> None:
+    """Entrypoint of the program."""
     global points
-    m: int = 1
-    greet()
-    time.sleep(k+1)
-    roulette_round(m,points)
-    what_now()
+    global m
+    if m == 1:
+        points = 50
+        m += 1
+    else:
+        points = points
+    while True:
+        options: str = input("Would you like to end your experience at The Old Well Casino?[Yes/No]: ")
+        if options == "No":
+                side_or_main: str = input("Would you like to play the main game (Roulette) or a mystery side game?[Main/Side]: ")
+                if side_or_main == "Main":
+                    greet()
+                    time.sleep(k+1)
+                    points = roulette_round(m,points)
+                    what_now()
+                elif side_or_main == "Side":
+                    """Entrypoint of side_game."""
+                    side_game()
+                else:
+                    print("Try your syntax again, this program is case sensitive!")
+                    main()
+        elif options == "Yes":
+                print("I hope you enjoyed playing with us today at the Old Well Casino!")
+                print(f"Ending Bank Balance: {points}")
+        return None
     
     
 
 def greet() -> None:
+    global points
     player_input: str = input(f"Type \"Start\" and press return to begin: ")
     if player_input == "Start" or "start":
             global player
-            print("Welcome to the Old Well Casino!")
+            print(f"Welcome to the Old Well Casino!{EMOJI}")
             time.sleep(k)
-            print(f"Today we will be playing Roulette.\n Esentially, you will start off with a set amount of money. \n When prompted, you will place a bet of any amount your bank account will allow for on a single number or group of numbers. \n If one of your guessed number/numbers matches up with the winning number revealed by the dealer, then your money goes up! \n Let's see if you know when to walk away from the table.")
+            print(f"Today we will be playing Roulette.\n Esentially, you will start off with a set amount of money. \n When prompted, you will place a bet of any amount your bank account will allow for on a single number (between 1 - 36). \n If one of your guessed number/numbers matches up with the winning number revealed by the dealer, then your money goes up! \n Let's see if you know when to walk away from the table.")
             time.sleep(k)
-            print("You are staring off with $50, so make sure your first bet is equal to or below that value.")
+            print(f"You have ${points}, so make sure your bet is equal to or below that value.")
             name_input: str = input("Enter your player name: ")
-            player += name_input
+            player = name_input
     else:
             print("Nice spelling, try again.")
             time.sleep(k + 1)
@@ -63,11 +87,13 @@ def roulette_round(round_num: int, current_points: int) -> int:
     red: int = 1
     black: int = 0
     green: int = 2
-    cash_bet: int = int(input("Enter an amount of money to bet: "))
-    color_bet: str = str(input("Enter the color you wish to bet on (Black, Red, Green (CASE SENSITIVE- enter how written)): "))
+    print(f"Roulette Round Number: {round_num}")
+    cash_bet: int = int(input(f"{player}, enter an amount of money to bet: "))
+    # assert cash_bet <= points
+    color_bet: str = str(input(f"Enter the color you wish to bet on, {player} (Black, Red, Green (CASE SENSITIVE- enter how written)): "))
     num_bet: int = int(input("Choose a number to bet on: "))
     if cash_bet <= current_points:
-        points -= cash_bet
+        current_points -= cash_bet
         print(f"Round \"{round_num}\" starting in 3 seconds... ")
         time.sleep(k+1)
         if i == red:
@@ -84,23 +110,57 @@ def roulette_round(round_num: int, current_points: int) -> int:
         time.sleep(3)
         print(j)
         if j == num_bet and s == color_bet:
-            points *= 3
-            print(f"You tripled your money Congratulations!\n Bank Account Balance: {points}")
-            return points
+            cash_bet *= 3
+            current_points += cash_bet
+            print(f"You tripled your money Congratulations!\n Bank Account Balance: {current_points}")
         elif j == num_bet or s == color_bet:
-            points *= 2
-            print(f"You doubled your money Congratulations!\n Bank Account Balance: {points}")
-            return points
+            cash_bet *= 2
+            current_points += cash_bet
+            print(f"You doubled your money Congratulations!\n Bank Account Balance: {current_points}")
         else:
             print("You lost this round, get back on the table and try again!")
-            return points
     else:
         print("Bet is too high for your current bank account balance! Try entering a lower amount.")
         time.sleep(k)
-        return points
+    points = current_points
+    return current_points
+    # what_now()
 
 def what_now() -> None:
-    print("Play again?")
+    global player
+    global m
+    play_again: str = (input(f"{player}, would you like to play again?[Yes/No]"))
+    if play_again == "Yes":
+        if input("Do you want to play 'Roulette' or 'Side Game'?") == "Roulette":
+            m += 1
+            roulette_round(m, points)
+        else:
+            side_game()
+    elif play_again == "No":
+        print(f"Game Over, total amount of money in account: {points}")
+    
+    
+def side_game() -> None:
+    """Side game."""
+    global points
+    dice_one: str = str(randint(1,6))
+    dice_two: str = str(randint(1,6))
+    print(f"Welcome to Dice Guesser, {player}! If you guess the correct value of one die, your money doubles, and if you guess the pair of dice correct, your money triples!")
+    guess_one: str = input("Guess the value of Die One: ")
+    guess_two: str =  input("Guess the value of Die Two: ")
+    if guess_one == dice_one and guess_two == dice_two:
+        print("You guessed both die correct and tripled your money!")
+        points *= 3
+    elif guess_one == dice_one and guess_two != dice_two:
+        print("You guessed die one correctly, and doubled your money!")
+        points *= 2
+    elif guess_one != dice_one and guess_two == dice_two:
+        print("You guessed die two correctly, and doubled your money!")
+        points *= 2
+    else:
+        print(f"Sorry {player}, you guessed both incorrectly and won no money :(")
+    print(f"Total money in account after Dice Guesser: {points}")
+    main()
 
 if __name__ == "__main__":
     main()
