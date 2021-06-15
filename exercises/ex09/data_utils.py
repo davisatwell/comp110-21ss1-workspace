@@ -1,10 +1,9 @@
 """Data utility functions."""
 
-__author__ = "YOUR 9-DIGIT PID"
+__author__ = "730384155"
 
-
-"""Data utility functions(Representing the Frequency table in LS19.py)."""
 from csv import DictReader
+
 # Functions below are under the hood of pandas and numpy
 def read_csv_rows(path: str) -> list[dict[str, str]]:
     """Read a CSV file and return a list of its rows."""
@@ -47,18 +46,18 @@ def select(table: dict[str, list[str]], cols: list[str]) -> dict[str, list[str]]
         result[col_name] = table[col_name]
     return result
 
-table: list[dict[str, str]] = read_csv_rows("data/weather.csv")
+# table: list[dict[str, str]] = read_csv_rows("data/nc_durham_2015_march_21_to_27.csv")
 
-column_oriented = columnar(table)
-n_rows = (head(column_oriented, 2)) # OUTPUT: {'date': ['3/16', '3/17'], ' high': [' 48.0', ' 63.0'], ' low': [' 39.0', ' 51.0']}
-print(n_rows) # (head(column_oriented, 2)) is saying that "I want to print the first two rows of data in said CSV file in column oriented format"
-# dates = column_values(table, "date") # extracts the "date" column from the weather.csv file
-# print(dates)
-# high = column_values(table, " high")
-# print(high)
+# column_oriented = columnar(table)
+# n_rows = (head(column_oriented, 2)) # OUTPUT: {'date': ['3/16', '3/17'], ' high': [' 48.0', ' 63.0'], ' low': [' 39.0', ' 51.0']}
+# print(n_rows) # (head(column_oriented, 2)) is saying that "I want to print the first two rows of data in said CSV file in column oriented format"
+# # dates = column_values(table, "date") # extracts the "date" column from the weather.csv file
+# # print(dates)
+# # high = column_values(table, " high")
+# # print(high)
 
-subset_col_oriented = select(column_oriented, ["date", " low"])
-print(f"Subset of Columns: {subset_col_oriented}")
+# subset_col_oriented = select(column_oriented, ["date", " low"])
+# print(f"Subset of Columns: {subset_col_oriented}")
 
 
 def count(values: list[str]) -> dict[str, int]:
@@ -68,5 +67,5 @@ def count(values: list[str]) -> dict[str, int]:
         if item in result:
             result[item] += 1
         elif item not in result:
-            result.append(item, 1)
+            result[item] = 1
     return result 
