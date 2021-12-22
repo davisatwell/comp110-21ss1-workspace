@@ -13,7 +13,7 @@
 #         i -= 1
 def main() -> None:
     numsighting: int = input("Num of sightings: ")
-    date:
+
 
 if __name__ == "__main__":
     main()
